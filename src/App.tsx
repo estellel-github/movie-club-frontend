@@ -10,7 +10,7 @@ function App() {
   return <AppRouter />;
 }
 
-// export default App;
+export default App;
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -44,4 +44,4 @@ function App() {
 //   )
 // }
 
-export default App
+// export default App
