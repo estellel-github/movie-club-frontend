@@ -10,7 +10,7 @@ export default function App() {
   }, [fetchUser]);
 
   return (
-    <div className="flex items-center justify-center mx-auto px-4 bg-linear-to-b/srgb from-black via-95%-gray-800 to-gray-600">
+    <div className="flex items-center justify-center mx-auto bg-linear-to-b/srgb from-neutral-950 via-95%-stone-950 to-stone-800">
       <AppRouter />
     </div>
   );

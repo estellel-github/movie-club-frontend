@@ -16,8 +16,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body, html {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100dvh;
+}
+
 a {
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: inherit;
 }
 
@@ -25,19 +31,27 @@ a:hover {
   color: #FFCC00;
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100dvh;
-}
-
+/* Apply responsive font sizes to all headings */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  @apply text-4xl sm:text-5xl font-bold;
 }
 
-button {
-  border-radius: 8px;
+h2 {
+  @apply text-2xl sm:text-3xl font-bold;
+}
+
+h3 {
+  @apply text-xl sm:text-2xl font-bold;
+}
+
+/* Apply responsive font sizes to links in the header */
+.header-link {
+  @apply text-lg sm:text-xl font-semibold;
+}
+
+.btn {
+  @apply text-sm sm:text-base font-semibold;
+  /* border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -45,19 +59,20 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s; */
 }
 
+/* 
 button:hover {
   border-color: #646cff;
-}
+} */ */
 
-button:focus,
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -70,4 +85,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
