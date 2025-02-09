@@ -9,5 +9,9 @@ export default function App() {
     fetchUser();
   }, [fetchUser]);
 
-  return <AppRouter />;
+  return (
+    <div className="flex items-center justify-center mx-auto px-4 bg-linear-to-b/srgb from-black via-95%-gray-800 to-gray-600">
+      <AppRouter />
+    </div>
+  );
 }
