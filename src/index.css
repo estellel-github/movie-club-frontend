@@ -1,7 +1,8 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Outfit, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -17,20 +18,17 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #535bf2;
+  color: #FFCC00;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 h1 {
@@ -66,7 +64,7 @@ button:focus-visible {
   }
 
   a:hover {
-    color: #747bff;
+    color: #FFCC00;
   }
 
   button {
