@@ -1,77 +1,67 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Hero from "@/components/ui/Hero";
+import FormContainer from "@/components/forms/FormContainer";
 
 export default function Signup() {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [introMsg, setIntroMsg] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    introMessage: "",
+  });
 
-  const handleSignup = async (e: React.FormEvent) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-
-    const res = await fetch("/api/auth/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, username, intro_msg: introMsg }),
-    });
-
-    if (!res.ok) {
-      setError("Signup failed. Check your details.");
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
       return;
     }
-
-    navigate("/login");
+    console.log("Sign up request:", formData);
+    // API call goes here
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <form
-        onSubmit={handleSignup}
-        className="p-6 bg-white shadow-lg rounded-md w-80"
-      >
-        <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
-        {error && <p className="text-red-500">{error}</p>}
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 mb-2 border border-gray-300 rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Username"
-          className="w-full p-2 mb-2 border border-gray-300 rounded"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 mb-2 border border-gray-300 rounded"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <textarea
-          placeholder="Intro message"
-          className="w-full p-2 mb-2 border border-gray-300 rounded"
-          value={introMsg}
-          onChange={(e) => setIntroMsg(e.target.value)}
-        />
-        <button
-          type="submit"
-          className="w-full bg-green-500 text-white p-2 rounded"
-        >
-          Sign Up
-        </button>
-      </form>
-    </div>
+    <>
+      <Hero imgPath="/images/signup.png" title="Sign Up" />
+      <FormContainer
+        title="Enter Your Details to Sign Up"
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        fields={[
+          { label: "Email", type: "email", name: "email" },
+          { label: "Username", type: "text", name: "username" },
+          { label: "Password", type: "password", name: "password" },
+          {
+            label: "Repeat Your Password",
+            type: "password",
+            name: "confirmPassword",
+          },
+          {
+            label: "Write a short message to introduce yourself!",
+            type: "text",
+            name: "introMessage",
+            textarea: true,
+          },
+        ]}
+        buttonText="Sign Up"
+        footer={
+          <>
+            Already have an account?{" "}
+            <Link to="/login" className="hover:text-yellow-400">
+              Log in instead
+            </Link>
+          </>
+        }
+      />
+    </>
   );
 }

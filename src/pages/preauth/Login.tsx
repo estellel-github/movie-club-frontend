@@ -1,57 +1,48 @@
 import { useState } from "react";
-import { useAuthStore } from "../../store/authStore";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Hero from "@/components/ui/Hero";
+import FormContainer from "@/components/forms/FormContainer";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const login = useAuthStore((state) => state.login);
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [statusMessage, setStatusMessage] = useState("");
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-
-    try {
-      await login(email, password);
-      navigate("/home"); // Redirect on success
-    } catch (err) {
-      setError("Invalid email or password");
-    }
+    console.log("Logging in with:", formData);
+    setStatusMessage("Processing login...");
+    // API call goes here
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <form
-        onSubmit={handleLogin}
-        className="p-6 bg-white shadow-lg rounded-md w-80"
-      >
-        <h2 className="text-2xl font-bold mb-4">Login</h2>
-        {error && <p className="text-red-500">{error}</p>}
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 mb-2 border border-gray-300 rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 mb-2 border border-gray-300 rounded"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded"
-        >
-          Login
-        </button>
-      </form>
-    </div>
+    <>
+      <Hero imgPath="/images/auth.png" title="Log In" />
+      <FormContainer
+        title="Enter Your Details to Log In"
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        fields={[
+          { label: "Email", type: "email", name: "email" },
+          { label: "Password", type: "password", name: "password" },
+        ]}
+        buttonText="Log In"
+        statusMessage={statusMessage}
+        footer={
+          <>
+            Forgot your password?{" "}
+            <Link to="/reset-password" className="hover:text-yellow-400">
+              Request a reset
+            </Link>
+          </>
+        }
+      />
+    </>
   );
 }
