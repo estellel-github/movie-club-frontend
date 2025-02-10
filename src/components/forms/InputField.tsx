@@ -27,7 +27,7 @@ export default function InputField({
           name={name}
           value={value}
           onChange={onChange}
-          className="input input-bordered bg-stone-700 text-neutral-200  w-full"
+          className="input text-lg input-bordered bg-stone-700 text-neutral-200  w-full"
           rows={3}
         />
       ) : (
@@ -36,7 +36,7 @@ export default function InputField({
           name={name}
           value={value}
           onChange={onChange}
-          className="input input-bordered bg-stone-700 text-neutral-200  w-full"
+          className="input text-lg input-bordered bg-stone-700 text-neutral-200  w-full"
         />
       )}
     </div>

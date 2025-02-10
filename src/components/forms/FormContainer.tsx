@@ -11,6 +11,7 @@ interface FormContainerProps {
   buttonText: string;
   footer?: React.ReactNode;
   statusMessage?: string;
+  errorMessage?: string;
 }
 
 export default function FormContainer({
@@ -22,6 +23,7 @@ export default function FormContainer({
   buttonText,
   footer,
   statusMessage,
+  errorMessage,
 }: FormContainerProps) {
   return (
     <div className="flex flex-col m-auto">
@@ -43,7 +45,12 @@ export default function FormContainer({
             {buttonText}
           </button>
         </form>
-        {statusMessage && (
+        {errorMessage && (
+          <div className="text-center font-bold mt-4 text-red-400">
+            {errorMessage}
+          </div>
+        )}
+        {!errorMessage && statusMessage && (
           <p className="text-center mt-4 text-yellow-400">{statusMessage}</p>
         )}
         {footer && (
