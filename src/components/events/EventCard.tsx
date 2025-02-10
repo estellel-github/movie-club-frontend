@@ -1,6 +1,20 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function EventCard({ event }: { event: any }) {
+interface EventCardProps {
+  event: {
+    id: string;
+    title: string;
+    location?: string;
+    date: string;
+    image: string;
+  };
+  privateView?: boolean;
+}
+
+export default function EventCard({
+  event,
+  privateView = false,
+}: EventCardProps) {
   return (
     <div className="card bg-stone-800 shadow-lg">
       <figure>
@@ -13,10 +27,17 @@ export default function EventCard({ event }: { event: any }) {
       <div className="card-body p-3">
         <div className="card-title font-bold">{event.title}</div>
         <p>{event.date}</p>
-        {/* <p className="text-sm text-gray-400">{event.location}</p> */}
-        {/* <Link to={`/events/${event.id}`} className="btn btn-warning">
-          Read More & RSVP
-        </Link> */}
+        {privateView && (
+          <p className="text-sm text-gray-400">{event.location}</p>
+        )}
+
+        {privateView ? (
+          <Link to={`/events/${event.id}`} className="btn btn-warning">
+            Read More & RSVP
+          </Link>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
