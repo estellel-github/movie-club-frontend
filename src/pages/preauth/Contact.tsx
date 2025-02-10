@@ -9,6 +9,7 @@ export default function Contact() {
     message: "",
   });
   const [statusMessage, setStatusMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -23,7 +24,7 @@ export default function Contact() {
       !formData.email.trim() ||
       !formData.message.trim()
     ) {
-      setStatusMessage("Please fill in all fields.");
+      setErrorMessage("Please fill in all fields.");
       return;
     }
     console.log("Message sent:", formData);
@@ -47,6 +48,7 @@ export default function Contact() {
         ]}
         buttonText="Submit"
         statusMessage={statusMessage}
+        errorMessage={errorMessage}
       />
     </>
   );
