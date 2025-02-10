@@ -33,7 +33,7 @@ a:hover {
 
 /* Apply responsive font sizes to all headings */
 h1 {
-  @apply text-4xl sm:text-5xl font-bold;
+  @apply text-5xl sm:text-6xl font-bold;
 }
 
 h2 {
