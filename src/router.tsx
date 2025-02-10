@@ -28,7 +28,7 @@ export default function AppRouter() {
         <Route path="/" element={<Layout />}>
           {/* Public Routes */}
           <Route index element={<Landing />} />
-          <Route path="events" element={<EventsPublic />} />
+          <Route path="events-public" element={<EventsPublic />} />
           <Route path="contact" element={<Contact />} />
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
