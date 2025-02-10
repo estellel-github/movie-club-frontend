@@ -7,7 +7,7 @@ export default function Header() {
       <div className="navbar-start">
         <Link to="/" className="flex items-center gap-3">
           <img src={"/images/bmc_logo.png"} className="h-8 w-auto" alt="Logo" />
-          <span className="text-xl font-bold text-yellow-400 whitespace-nowrap">
+          <span className="text-sm lg:text-2xl font-bold text-yellow-400">
             Berlin Movie Club
           </span>
         </Link>
