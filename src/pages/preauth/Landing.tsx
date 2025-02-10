@@ -1,7 +1,6 @@
 import Banner from "@/components/ui/Banner";
-import EventCard from "../../components/events/EventCard";
-import { Link } from "react-router-dom";
 import UpcomingPublicEvents from "@/components/events/UpcomingPublicEvents";
+import InfoBlock from "@/components/ui/InfoBlock";
 
 export default function Landing() {
   // Mock event data (replace with API call later)
@@ -31,7 +30,6 @@ export default function Landing() {
 
   return (
     <>
-      {/* Landing Hero Section */}
       <img src={"/images/cinema.png"}></img>
       <div className="text-center bg-linear-to-r from-neutral-950 to-gray-800 p-8">
         <div className="text-3xl sm:text-5xl font-bold">
@@ -41,39 +39,23 @@ export default function Landing() {
           Berlin Movie Club
         </div>
       </div>
-
-      {/* About Section */}
-      <section className="container mx-auto mt-4 p-6">
-        <h2>Welcome to the Berlin Movie Club!</h2>
-        <div className="bg-stone-800 p-6 rounded-lg mt-4 text-lg">
-          <p>
-            Love movies? So do we! The Berlin Movie Club is a community of film
-            lovers who meet regularly to watch and discuss movies—whether at the
-            cinema, cozy venues, or unique locations around the city. Join us
-            for our next movie night!
-          </p>
-          {/* <Link to="/about" className="btn btn-warning mt-4">
-            Read More
-          </Link> */}
-        </div>
-      </section>
-
+      <InfoBlock
+        title="Welcome to the Berlin Movie Club!"
+        text="Love movies? So do we! The Berlin Movie Club is a community of film lovers who meet regularly to watch and discuss movies—whether at the cinema, cozy venues, or unique locations around the city. Join us for our next movie night!"
+      />
       <UpcomingPublicEvents events={upcomingPublicEvents} />
-
       <Banner
         imgPath="/images/events.png"
         title="All Events"
-        linkPath="/events"
+        linkPath="/events-public"
         buttonText="See All Events"
       />
-
       <Banner
         imgPath="/images/signup.png"
         title="Interested in Joining?"
         linkPath="/signup"
         buttonText="Sign Up"
       />
-
       <Banner
         imgPath="/images/contact.png"
         title="Any Questions?"
