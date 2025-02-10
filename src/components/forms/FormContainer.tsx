@@ -27,7 +27,7 @@ export default function FormContainer({
 }: FormContainerProps) {
   return (
     <div className="flex flex-col m-auto">
-      <div className="min-w-[412px] sm:min-w-[512px] max-w-md mx-auto mt-8 p-6 bg-stone-800 rounded-lg shadow-lg">
+      <div className="min-w-[412px] sm:min-w-[512px] max-w-md mx-auto mt-8 mb-8 p-6 bg-stone-800 rounded-lg shadow-lg">
         <h2 className="text-center mb-4">{title}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {fields.map((field) => (
