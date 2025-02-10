@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Hero from "@/components/ui/Hero";
 import FormContainer from "@/components/forms/FormContainer";
 
 export default function Signup() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -12,20 +14,43 @@ export default function Signup() {
     introMessage: "",
   });
 
+  const [error, setError] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+    setStatusMessage("Processing signup...");
+
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
+      setError("Passwords do not match!");
       return;
     }
-    console.log("Sign up request:", formData);
-    // API call goes here
+
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: formData.email,
+        password: formData.password,
+        username: formData.username,
+        intro_msg: formData.introMessage,
+      }),
+    });
+
+    if (!res.ok) {
+      setError("Signup failed. Check your details.");
+      return;
+    }
+
+    setStatusMessage("Signup successful! Redirecting...");
+    setTimeout(() => navigate("/login"), 2000); // Redirect after success
   };
 
   return (
@@ -53,6 +78,8 @@ export default function Signup() {
           },
         ]}
         buttonText="Sign Up"
+        statusMessage={statusMessage}
+        errorMessage={error}
         footer={
           <>
             Already have an account?{" "}
