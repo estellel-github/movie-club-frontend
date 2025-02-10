@@ -1,32 +1,10 @@
 import Banner from "@/components/ui/Banner";
-import UpcomingPublicEvents from "@/components/events/UpcomingPublicEvents";
 import InfoBlock from "@/components/ui/InfoBlock";
+import EventSection from "@/components/events/EventSection";
+import { upcomingEvents } from "@/utils/mockData";
 
 export default function Landing() {
-  // Mock event data (replace with API call later)
-  const upcomingPublicEvents = [
-    {
-      id: "1",
-      title: "February Movie #1 - Babygirl",
-      date: "Feb. 15, 2025 - 19:00",
-      location: "Babylon Kreuzberg, Dresden Str. 126, Berlin",
-      image: "/images/babygirl.jpg",
-    },
-    {
-      id: "2",
-      title: "February Movie #2 - Wicked",
-      date: "Feb. 22, 2025 - 19:00",
-      location: "Babylon Kreuzberg, Dresden Str. 126, Berlin",
-      image: "/images/wicked.jpg",
-    },
-    {
-      id: "3",
-      title: "February Movie #3 - The Brutalist",
-      date: "Feb. 28, 2025 - 19:00",
-      location: "Filmtheater am Friedrichshain, Berlin",
-      image: "/images/brutalist.jpg",
-    },
-  ];
+  // REPLACE MOCK DATA WITH API CALL
 
   return (
     <>
@@ -43,7 +21,11 @@ export default function Landing() {
         title="Welcome to the Berlin Movie Club!"
         text="Love movies? So do we! The Berlin Movie Club is a community of film lovers who meet regularly to watch and discuss movies—whether at the cinema, cozy venues, or unique locations around the city. Join us for our next movie night!"
       />
-      <UpcomingPublicEvents events={upcomingPublicEvents} />
+      <EventSection
+        events={upcomingEvents}
+        viewType="upcoming"
+        privateView={false}
+      />
       <Banner
         imgPath="/images/events.png"
         title="All Events"
