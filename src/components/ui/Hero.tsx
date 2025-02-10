@@ -6,7 +6,7 @@ interface HeroProps {
 export default function Hero({ imgPath, title }: HeroProps) {
   const altText = title + " Hero Image";
   return (
-    <div className="relative w-full border-b-2 border-b-stone-800">
+    <div className="relative w-full border-b-2 border-b-stone-800 mb-4">
       <img
         src={imgPath}
         className="opacity-50 w-full h-52 object-cover"

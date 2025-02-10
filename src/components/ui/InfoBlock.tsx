@@ -14,7 +14,7 @@ export default function InfoBlock({
   buttonLink,
 }: InfoBlockProps) {
   return (
-    <section className="container mx-auto mt-4 p-6">
+    <section className="container mx-auto p-6">
       <h2 className="text-3xl font-bold">{title}</h2>
       <div className="bg-stone-800 p-6 rounded-lg mt-4 text-lg">
         <p>{text}</p>
