@@ -64,7 +64,7 @@ export default function Home() {
 
       <InfoBlock
         title="Want to Suggest a Movie or Location?"
-        text="Have a favorite film you’d love to watch with the club? Know a great venue for our next screening?
+        text="Have a favorite film you’d love to watch and discuss with the club? Know a great venue for our next screening?
         We’re always open to new ideas! 
         Whether it’s a cult classic, a hidden indie gem, or a unique location, we’d love to hear your suggestions."
         buttonText="Contact Us"

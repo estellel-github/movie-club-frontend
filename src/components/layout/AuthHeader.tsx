@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
 
 export default function AuthHeader() {
-  const { logout } = useAuthStore(); // Logout function from Zustand
+  const { logout } = useAuthStore();
 
   return (
     <header className="bg-black text-white p-4 flex justify-between items-center">
@@ -13,11 +13,11 @@ export default function AuthHeader() {
         </div>
       </Link>
       <nav>
-        <Link to="/movies" className="text-lg mx-4 hover:text-yellow-400">
-          Movies
-        </Link>
         <Link to="/events" className="text-lg mx-4 hover:text-yellow-400">
           Events
+        </Link>
+        <Link to="/movies" className="text-lg mx-4 hover:text-yellow-400">
+          Movies
         </Link>
         <Link to="/contact" className="text-lg mx-4 hover:text-yellow-400">
           Contact
