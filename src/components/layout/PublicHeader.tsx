@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 
 export default function Header() {
+  const handleClick = () => {
+    const elem = document.activeElement as HTMLElement | null;
+    if (elem) {
+      elem.blur(); // Removes focus from dropdown, closing it automatically
+    }
+  };
+
   return (
     <div className="navbar bg-neutral-950 text-neutral-200 px-6 border-b-2 border-b-stone-800 justify-between">
       {/* Left (Logo & Brand) */}
@@ -61,22 +68,22 @@ export default function Header() {
             tabIndex={0}
             className="menu menu-sm dropdown-content w-full bg-neutral-950 text-neutral-200 rounded-box z-[1] mt-3 p-2 shadow -top-6"
           >
-            <li>
+            <li onClick={handleClick}>
               <Link to="/events-public" className="text-2xl mb-4">
                 Events
               </Link>
             </li>
-            <li>
+            <li onClick={handleClick}>
               <Link to="/contact" className="text-2xl mb-4">
                 Contact
               </Link>
             </li>
-            <li>
+            <li onClick={handleClick}>
               <Link to="/signup" className="text-2xl mb-4">
                 Sign Up
               </Link>
             </li>
-            <li>
+            <li onClick={handleClick}>
               <Link to="/login" className="text-2xl mb-4">
                 Log In
               </Link>
